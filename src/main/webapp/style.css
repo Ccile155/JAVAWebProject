@@ -12,9 +12,22 @@ and open the template in the editor.
     float : left;
 }
 
+#Accueil{
+    text-align: center;
+    background-image: url("./images/bibli.jpg");
+    background-position:61.5px center;
+    background-repeat: no-repeat;
+    height: 640px;
+    vertical-align: middle;
+}
+
+#Annonce{
+    text-shadow: 2px 2px 0px white;
+}
+
 footer{
   background-color: #17A2B8;
-  padding: 10px 30px 10px 30px;
+  padding: 10px 30px 5px 30px;
 }
 
 footer a {

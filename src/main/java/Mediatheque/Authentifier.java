@@ -6,7 +6,6 @@
 package Mediatheque;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -39,19 +38,6 @@ public class Authentifier extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Authentifier</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Authentifier at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -91,13 +77,12 @@ public class Authentifier extends HttpServlet {
         if(idSaisi != null && mdpSaisi != null){
             session.setAttribute("id", idSaisi);
             request.setAttribute( "user", idSaisi );
-            sc.getRequestDispatcher("/Navbar").forward(request, response);
+//            sc.getRequestDispatcher("/Navbar.jsp").forward(request, response);
 //            response.sendRedirect(sc.getContextPath() + "/Emprunter");
-            sc.getRequestDispatcher("/Emprunt.jsp").forward(request, response);
-            return;
+            sc.getRequestDispatcher("/Emprunter").forward(request, response);
         } else {
-//          response.sendRedirect(sc.getContextPath() + "/Connexion");
-            sc.getRequestDispatcher("/Connexion").forward(request, response);
+          response.sendRedirect(sc.getContextPath() + "/Connexion");
+//            sc.getRequestDispatcher("/Connexion").forward(request, response);
             return;
         }
     }

@@ -3,10 +3,8 @@
     Created on : 30 juil. 2019, 17:01:00
     Author     : Administrateur
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <html>
     <head>
         <title>Médiathèque</title>
@@ -14,26 +12,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-        <style>
-            .container { text-align: center;}
-        </style>
-    
-    </head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+     </head>
     <body>
-        
         <%@include file="/Navbar.jsp" %>
-        <div class="container">
         <br>
-        <h1>Bienvenue sur MediaShare, les médias pas chers !</h1>
-        <p> mode JSP</p>
-        <br>
-        <br>
+        <div class="container" id="Accueil">
+            <br>
+            <br>
+            <br>
+            <div id="Annonce">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>Bienvenue sur MediaShare, les médias pas chers !</h1>
+                <br>
+                <h4> Retrouvez vos livres et DVDs préférés </h4>
+            </div>
+            <br>
         </div>
         <%@include file="/Footer.jsp" %>
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </body>
-</html>
 </html>

@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>Consulter</servlet-name>
-        <servlet-class>Mediatheque.Consulter</servlet-class>
+        <servlet-class>Mediatheque.Catalogue</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Emprunter</servlet-name>

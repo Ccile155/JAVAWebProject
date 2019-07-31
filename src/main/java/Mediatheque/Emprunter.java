@@ -33,8 +33,8 @@ public class Emprunter extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        liste = new ArrayList<>();
-        Importe();
+//        liste = new ArrayList<>();
+//        Importe();
         sc = config.getServletContext();
     }
 
@@ -70,13 +70,13 @@ public class Emprunter extends HttpServlet {
             sc.getRequestDispatcher("/Connexion").forward(request, response);
             return;
         }
-        
-        ArrayList <Media> table = new ArrayList<>();
-        for (Media x : liste) {
-            table.add(x);
-            request.setAttribute("media", table);
-        }
-        this.getServletContext().getRequestDispatcher("/Emprunt.jsp").forward(request, response);
+//        
+//        ArrayList <Media> table = new ArrayList<>();
+//        for (Media x : liste) {
+//            table.add(x);
+//            request.setAttribute("media", table);
+//        }
+//        this.getServletContext().getRequestDispatcher("/Emprunt.jsp").forward(request, response);
     }
 
     /**
@@ -90,11 +90,13 @@ public class Emprunter extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                HttpSession session = request.getSession(true);
-        Integer id = (Integer) session.getAttribute("id");
+        HttpSession session = request.getSession(true);
+        String id = (String) session.getAttribute("id");
         if (id == null){
-            response.sendRedirect(sc.getContextPath()+"/connexion.html");
+            sc.getRequestDispatcher("/Connexion").forward(request, response);
             return;
+        } else {
+            sc.getRequestDispatcher("/Emprunt.jsp").forward(request, response);
         }
     }
 
@@ -108,35 +110,35 @@ public class Emprunter extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public void Importe(){
-    try{
-        FileInputStream fis = new FileInputStream("./data/export.csv");
-        Scanner sc = new Scanner(fis);
-        String ligne;
-        while(sc.hasNextLine()){
-            ligne = sc.nextLine();
-            String[] table = ligne.split(";");
-            if(table.length == 0){continue;}
-            
-            try{
-                Media m ;
-                if (table[2].endsWith("p")) {
-                    m = new Livre(table[0], table[1], table[2]);
-                } else {
-                    m = new DVD(table[0], table[1], table[2]);
-                }
-                if (!liste.contains(m)) {
-                    liste.add(m);
-                    }
-            } catch (Exception e){
-                System.out.println(e.getMessage());
-            } 
-        }
-        fis.close();   
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Consulter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Consulter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    public void Importe(){
+//    try{
+//        FileInputStream fis = new FileInputStream("./data/export.csv");
+//        Scanner sc = new Scanner(fis);
+//        String ligne;
+//        while(sc.hasNextLine()){
+//            ligne = sc.nextLine();
+//            String[] table = ligne.split(";");
+//            if(table.length == 0){continue;}
+//            
+//            try{
+//                Media m ;
+//                if (table[2].endsWith("p")) {
+//                    m = new Livre(table[0], table[1], table[2]);
+//                } else {
+//                    m = new DVD(table[0], table[1], table[2]);
+//                }
+//                if (!liste.contains(m)) {
+//                    liste.add(m);
+//                    }
+//            } catch (Exception e){
+//                System.out.println(e.getMessage());
+//            } 
+//        }
+//        fis.close();   
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }
