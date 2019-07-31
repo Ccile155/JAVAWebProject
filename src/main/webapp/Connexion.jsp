@@ -16,7 +16,7 @@
     </head>
     <body>
         
-         <%@include file="Navbar.jsp" %>
+        <%@include file="/Navbar.jsp" %>
          
         <br>
         <div class="container">
@@ -38,6 +38,6 @@
             </form>
         </div>
         <br>    
-        <%@include file="Footer.jsp" %>
+        <%@include file="/Footer.jsp" %>
     </body>
 </html>

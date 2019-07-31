@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-<!--    <servlet>
-        <servlet-name>index</servlet-name>
-        <servlet-class>MonServlet1.NewClass</servlet-class>
+    <servlet>
+        <servlet-name>Authentifier</servlet-name>
+        <servlet-class>Mediatheque.Authentifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Consulter</servlet-name>
+        <servlet-class>Mediatheque.Consulter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Emprunter</servlet-name>
+        <servlet-class>Mediatheque.Emprunter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <jsp-file>/Connexion.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Navbar</servlet-name>
+        <jsp-file>/Navbar.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Footer</servlet-name>
+        <jsp-file>/Footer.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>index</servlet-name>
-        <url-pattern>/ProjetWeb/WEB-INF/</url-pattern>
+        <servlet-name>Authentifier</servlet-name>
+        <url-pattern>/Authentifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Emprunter</servlet-name>
+        <url-pattern>/Emprunter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Consulter</servlet-name>
+        <url-pattern>/Consulter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/Connexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Navbar</servlet-name>
+        <url-pattern>/Navbar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Footer</servlet-name>
+        <url-pattern>/Footer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/#</url-pattern>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,21 +63,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>/index</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-</web-app>-->
-
-    <servlet>
-        <servlet-name>Authentifier</servlet-name>
-        <servlet-class>Mediatheque.Authentifier</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Authentifier</servlet-name>
-        <url-pattern>/Authentifier</url-pattern>
-    </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
 </web-app>

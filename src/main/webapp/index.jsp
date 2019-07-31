@@ -15,19 +15,21 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
         <style>
-            body { text-align: center;}
+            .container { text-align: center;}
         </style>
     
     </head>
     <body>
         
-        <%@include file="Navbar.jsp" %>
-        
+        <%@include file="/Navbar.jsp" %>
+        <div class="container">
         <br>
         <h1>Bienvenue sur MediaShare, les médias pas chers !</h1>
+        <p> mode JSP</p>
         <br>
         <br>
-        <%@include file="Footer.jsp" %>
+        </div>
+        <%@include file="/Footer.jsp" %>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>

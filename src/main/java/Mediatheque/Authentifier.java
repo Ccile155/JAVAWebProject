@@ -66,7 +66,7 @@ public class Authentifier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(sc.getContextPath()+"/Connexion.html");
+        sc.getRequestDispatcher("/Connexion").forward(request, response);
         return;
     }
 
@@ -91,13 +91,13 @@ public class Authentifier extends HttpServlet {
         if(idSaisi != null && mdpSaisi != null){
             session.setAttribute("id", idSaisi);
             request.setAttribute( "user", idSaisi );
-            sc.getRequestDispatcher("/WEB-INF/Navbar.jsp").forward(request, response);
+            sc.getRequestDispatcher("/Navbar").forward(request, response);
 //            response.sendRedirect(sc.getContextPath() + "/Emprunter");
-            sc.getRequestDispatcher("/WEB-INF/Emprunt.jsp").forward(request, response);
+            sc.getRequestDispatcher("/Emprunt.jsp").forward(request, response);
             return;
         } else {
 //          response.sendRedirect(sc.getContextPath() + "/Connexion");
-            sc.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+            sc.getRequestDispatcher("/Connexion").forward(request, response);
             return;
         }
     }

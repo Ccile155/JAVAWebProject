@@ -16,14 +16,14 @@
     <body>
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-            <a class="navbar-brand" href="#">MédiaShare</a>
+            <a class="navbar-brand" href="/ProjetWeb/#">MédiaShare</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/ProjetWeb/WEB-INF/index.jsp"><i class="material-icons">home</i> Accueil <span class="sr-only">(current)</span>&nbsp;</a>
+                        <a class="nav-link" href="/ProjetWeb/Home"><i class="material-icons">home</i> Accueil <span class="sr-only">(current)</span>&nbsp;</a>
                     </li> 
                     <li class="nav-item">
                         <a class="nav-link" href="/ProjetWeb/Consulter?t=livre"><i class="material-icons">local_library</i> Livres &nbsp;</a>
@@ -47,8 +47,10 @@
                               if (user != null){out.println(user);} else {out.println("Session Invitée");}
                                %></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/ProjetWeb/Connexion">Connexion</a>
-                                <a class="dropdown-item" href="/ProjetWeb/">Deconnexion</a>
+                                <% if (user != null){ out.println("<a class='dropdown-item' href='/ProjetWeb/Parameters'><i class='material-icons'>settings</i> Paramètres</a>");
+                                } else {out.println("<a class='dropdown-item' href='/ProjetWeb/Connexion'><i class='material-icons'>check</i> Connexion</a>");}
+                               %>
+                                <a class="dropdown-item" href="/ProjetWeb/Home"><i class='material-icons'>close</i> Deconnexion</a>
                             </div>
                         </li>
                     </ul>

@@ -5,17 +5,13 @@
  */
 package Mediatheque;
 
-import static Mediatheque.Saisie.liste;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.context.FacesContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -71,7 +67,7 @@ public class Consulter extends HttpServlet {
             throws ServletException, IOException {
         String type = request.getParameter("t");
         if (type == null) {
-            response.sendRedirect(sc.getContextPath()+"/index.html");
+            sc.getRequestDispatcher("/").forward(request, response);
             return;
         }
 
@@ -83,7 +79,7 @@ public class Consulter extends HttpServlet {
             request.setAttribute("media", table);
         }
             
-        sc.getRequestDispatcher("/WEB-INF/Consult.jsp").forward(request, response);
+        sc.getRequestDispatcher("/Consult.jsp").forward(request, response);
         }
 
     /**

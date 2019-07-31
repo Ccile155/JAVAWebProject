@@ -10,10 +10,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Emprunt</title>
     </head>
     <body>
-        <%@include file="Navbar.jsp" %>
+        <%@include file="/Navbar.jsp" %>
         <br>
          <form class="container">
             <br>
@@ -36,6 +37,6 @@
             </div>
           </form>
           <br>    
-          <%@include file="Footer.jsp" %>    
+          <%@include file="/Footer.jsp" %>   
     </body>
 </html>

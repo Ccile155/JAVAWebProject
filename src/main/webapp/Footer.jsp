@@ -6,14 +6,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Foot</title>
     </head>
     <body>
         <br>
-        <footer style="background-color: #17A2B8; padding: 10px 30px 10px 30px;">
+        <footer>
             <div class="foot">
                 <ul class="list-unstyled">
                     <li class="float-lg-right"><a href="#top">Back to top</a></li>
@@ -27,4 +28,4 @@
             </div>
         </footer>
     </body>
-</html>
+

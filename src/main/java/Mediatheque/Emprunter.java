@@ -8,7 +8,6 @@ package Mediatheque;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -68,7 +67,7 @@ public class Emprunter extends HttpServlet {
         String id = (String) session.getAttribute("id");
         if (id == null){
 //            response.sendRedirect(sc.getContextPath()+"/Connexion.html");
-            sc.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+            sc.getRequestDispatcher("/Connexion").forward(request, response);
             return;
         }
         
@@ -77,7 +76,7 @@ public class Emprunter extends HttpServlet {
             table.add(x);
             request.setAttribute("media", table);
         }
-        this.getServletContext().getRequestDispatcher("/WEB-INF/Emprunt.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/Emprunt.jsp").forward(request, response);
     }
 
     /**
