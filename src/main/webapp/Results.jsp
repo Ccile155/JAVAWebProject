@@ -23,10 +23,10 @@
         <jsp:setProperty name="MaRecherche" property="auteur"/>
         <jsp:setProperty name="MaRecherche" property="param"/>
         
-        <div class="container">
+        <div class="container" id="resultats">
 
             <h1>Résultats</h1>
-
+            <br>
             <jsp:include page="/filtrercata" />
             <% // String m = (String)session.getAttribute("resultat");
 //            out.println(m);%>

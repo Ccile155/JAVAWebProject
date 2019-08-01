@@ -22,44 +22,46 @@
     </head>
     <body>
         <%@include file="/Navbar.jsp" %>
-        <br>
-        <%String type1 = request.getParameter("t");
-        out.println("<h1 style='text-align:center;'>Catalogue des "+ type1 +"s</h1>");
-         %>
-        <br>
-         <table class="table container">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Titre</th>
-              <th scope="col">Auteur</th>
-              <th scope="col">Infos</th>
-            </tr>
-          </thead>
-          <tbody>
-          <%String type = request.getParameter("t");
-            int cpt = 0;
-            for (Media item : liste) {
-                if (type.equals("livre") && (item instanceof Livre)){
-                    Livre l = (Livre)item;
-                    %><tr>
-                    <th scope='row'> <%= ++cpt %></th>
-                    <td><%= l.getTitre() %></td>
-                    <td><%= l.getAuteur() %></td><%
-                    out.println("<td>"+ l.getNbpage()+ "</td>");
-                    %></tr><%}
-                if (type.equals("dvd") && (item instanceof DVD)){
-                    DVD d = (DVD)item;
-                    %><tr>
-                    <th scope='row'> <%= ++cpt %></th>
-                    <td><%= d.getTitre() %></td>
-                    <td><%= d.getAuteur() %></td><%
-                    out.println("<td>"+ d.getDuree()+ "</td>");
-                    %></tr><%}
-            }%>
-          </tbody>
-        </table>
-        <br>       
+        <div class="Accueil">
+            <br>
+            <%String type1 = request.getParameter("t");
+            out.println("<h1 style='text-align:center; color: white'>Catalogue des <span style ='text-transform: capitalize;'>"+ type1 +"s</span></h1>");
+             %>
+            <br>
+             <table class="table container">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Titre</th>
+                  <th scope="col">Auteur</th>
+                  <th scope="col">Infos</th>
+                </tr>
+              </thead>
+              <tbody>
+              <%String type = request.getParameter("t");
+                int cpt = 0;
+                for (Media item : liste) {
+                    if (type.equals("livre") && (item instanceof Livre)){
+                        Livre l = (Livre)item;
+                        %><tr>
+                        <th scope='row'> <%= ++cpt %></th>
+                        <td><%= l.getTitre() %></td>
+                        <td><%= l.getAuteur() %></td><%
+                        out.println("<td>"+ l.getNbpage()+ "</td>");
+                        %></tr><%}
+                    if (type.equals("dvd") && (item instanceof DVD)){
+                        DVD d = (DVD)item;
+                        %><tr>
+                        <th scope='row'> <%= ++cpt %></th>
+                        <td><%= d.getTitre() %></td>
+                        <td><%= d.getAuteur() %></td><%
+                        out.println("<td>"+ d.getDuree()+ "</td>");
+                        %></tr><%}
+                }%>
+              </tbody>
+            </table>
+            <br>
+        </div>
         <%@include file="/Footer.jsp" %>
     </body>
 </html>

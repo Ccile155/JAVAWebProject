@@ -16,7 +16,7 @@
      </head>
     <body >
         <%@include file="/Navbar.jsp" %>
-        <div id="Accueil" >
+        <div class="Accueil">
             <br>
             <br>
             <br>
