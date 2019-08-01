@@ -23,11 +23,13 @@
     <body>
         <%@include file="/Navbar.jsp" %>
         <br>
-        <form class="container">
+        <form class="container" id="emprunt">
             <br>
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Selectionner un média à emprunter</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
+            <h1>Médias disponibles</h1>
+            <br>
+            <div class="form-group container">
+                <!--<label for="exampleFormControlSelect2">Médias disponibles</label>-->
+                <select multiple class="form-control" id="selectEmprunt">
                     <% 
                         for (Media item : liste) {
                         out.println("<option>");

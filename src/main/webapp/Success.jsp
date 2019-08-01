@@ -16,10 +16,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br>
-        <h2> Connexion réussie !</h2>
-        <h4> Bienvenue <%String user = (String) session.getAttribute("email");
-                        out.println(user); %> </h4>
-        <br>
+        <%@include file="/Navbar.jsp" %>
+        <div class="container">
+            <br>
+            <h2> Connexion réussie !</h2>
+            <h4> Bienvenue <% if (user != null) {out.println(user +"!");} else {out.println("!");} %> </h4>
+            <br>
+        </div>    
+        <%@include file="/Footer.jsp" %>
     </body>
 </html>

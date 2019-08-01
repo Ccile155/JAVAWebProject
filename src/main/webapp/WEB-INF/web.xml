@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>Emprunter</servlet-name>
-        <servlet-class>Mediatheque.Emprunter</servlet-class>
+        <jsp-file>/Emprunt.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>Connexion</servlet-name>
@@ -27,6 +27,10 @@
     <servlet>
         <servlet-name>Footer</servlet-name>
         <jsp-file>/Footer.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>FiltrerCata</servlet-name>
+        <servlet-class>Mediatheque.FiltrerCata</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Authentifier</servlet-name>
@@ -56,6 +60,10 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/#</url-pattern>
         <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FiltrerCata</servlet-name>
+        <url-pattern>/filtrercata</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

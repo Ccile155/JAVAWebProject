@@ -23,7 +23,11 @@
     <body>
         <%@include file="/Navbar.jsp" %>
         <br>
-        <table class="table container">
+        <%String type1 = request.getParameter("t");
+        out.println("<h1 style='text-align:center;'>Catalogue des "+ type1 +"s</h1>");
+         %>
+        <br>
+         <table class="table container">
           <thead>
             <tr>
               <th scope="col"></th>

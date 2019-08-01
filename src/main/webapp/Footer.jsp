@@ -1,4 +1,3 @@
-<br>
 <footer>
     <div class="foot">
         <ul class="list-unstyled">

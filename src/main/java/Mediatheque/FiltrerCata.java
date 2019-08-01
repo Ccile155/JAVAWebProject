@@ -6,36 +6,19 @@
 package Mediatheque;
 
 import java.io.IOException;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Administrateur
  */
-public class Authentifier extends HttpServlet {
-    ServletContext sc;
-//    private String user = "Session invitée";
-//
-//    public String getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(String user) {
-//        this.user = user;
-//    }
-    
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        sc = config.getServletContext();
-    }
-    
+public class FiltrerCata extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,9 +30,26 @@ public class Authentifier extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        try (PrintWriter out = response.getWriter()) {
-//            out.println(user);
-//        }
+        
+        Recherche r = (Recherche)request.getSession().getAttribute("MaRecherche"); //récupération du bean
+        ArrayList<Media> liste = Catalogue.get();
+        ArrayList<Media> ResultatRecherche = new ArrayList<>();
+        for (Media x: liste){
+            if (x.getAuteur().equals((r.getAuteur()))){
+                ResultatRecherche.add(x);
+            }
+        PrintWriter out = response.getWriter();
+        for (Media v: ResultatRecherche){
+            if (v instanceof Livre){
+                Livre l = (Livre)v;
+                out.println(l.getTitre()+", "+ l.getAuteur()+", "+ l.getNbpage()+"<br>");
+            }
+            if (v instanceof DVD){
+                DVD d = (DVD)v;
+                out.println(d.getTitre()+", "+ d.getAuteur()+", "+ d.getDuree()+"<br>");
+        }}
+        request.setAttribute("resultat", r);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,7 +64,7 @@ public class Authentifier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        sc.getRequestDispatcher("/Connexion").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -78,23 +78,7 @@ public class Authentifier extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String userSaisi = request.getParameter("user");
-        String idSaisi = request.getParameter("email");
-        String mdpSaisi = request.getParameter("password");
-        
-//        request.setAttribute( "user", "Session Invitée" );
-        if(idSaisi != null && mdpSaisi != null && userSaisi != null){
-//            session.setAttribute("id", idSaisi);
-            session.setAttribute("user", userSaisi );
-//            sc.getRequestDispatcher(sc.getContextPath() +"/Navbar").include(request, response);
-//            response.sendRedirect(sc.getContextPath() + "/Emprunter");
-            sc.getRequestDispatcher("/Emprunter").forward(request, response);
-//            sc = "this.getServletContext()"
-        } else {
-            response.sendRedirect(sc.getContextPath() + "/Connexion");
-//            sc.getRequestDispatcher("/Connexion").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

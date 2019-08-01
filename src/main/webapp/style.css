@@ -7,24 +7,69 @@ and open the template in the editor.
     Created on : 31 juil. 2019, 09:55:53
     Author     : Administrateur
 */
-
+/*################## NAVE ##################*/
 #navbarNav2{
     float : left;
 }
 
+#navbarDropdown{
+    margin-right: 15px;
+}
+
+/*################## BODIES ##################*/
+
 #Accueil{
+    height: 550px;
     text-align: center;
-    background-image: url("./images/bibli.jpg");
-    background-position:61.5px center;
+    background-image: url("./images/book.jpg");
+    background-position:center center;
     background-repeat: no-repeat;
-    height: 640px;
+    background-size: cover;
+    /*background-size: 600px auto;*/
     vertical-align: middle;
 }
 
 #Annonce{
-    text-shadow: 2px 2px 0px white;
+    /*text-shadow: 2px 2px 0px black;*/
+    color: white;
+    font-weight: bolder;
 }
 
+/*#imgSearch{
+    width: 100%;
+}*/
+input.transparent-input{
+       background-color:rgba(255,255,255,0.2) !important;
+       /*border:none !important;*/
+       width: 500px;
+    }
+#recherche{
+    height: 550px;
+    background-image: url("./images/tasse.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#emprunt{
+    text-align: center;
+    width: 500px;
+}
+#selectEmprunt{
+    
+    /*background-color:rgba(23,162,184,0.1) !important;*/
+    background-color:rgba(255,228,132,0.1) !important;
+}
+
+#deco{
+    text-align: center;
+    color: white;
+    height: 500px;
+    width: auto;
+    background-image: url("./images/medias.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/*################## FOOTER ##################*/
 footer{
   background-color: #17A2B8;
   padding: 10px 30px 5px 30px;

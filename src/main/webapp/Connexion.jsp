@@ -18,17 +18,20 @@
     <body>
         
         <%@include file="/Navbar.jsp" %>
-         
         <br>
         <div class="container">
-            <h2>Veuillez vous connecter</h2>
-            <form name="Connexion" method="POST" action="/ProjetWeb/Authentifier">
+            <h2>Connexion</h2>
+            <form name="Connexion" method="POST" action="<%=getServletConfig().getServletContext().getContextPath()%>/Authentifier">
 <!--                <div class="form-group">
                   <label for="exampleFormControlInput1">Nom</label>
                   <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Votre nom">
                 </div>-->
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Email address</label>
+                  <label for="exampleFormControlInput1">Nom</label>
+                  <input name="user" type="text" class="form-control" id="user" placeholder="Pseudo">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Adresse mail</label>
                   <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group">
