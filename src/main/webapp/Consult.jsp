@@ -7,8 +7,12 @@
 <%@page import="Mediatheque.Livre"%>
 <%@page import="Mediatheque.Catalogue"%>
 <%@page import="java.util.ArrayList" 
-        import="Mediatheque.Media"%>
+        import="Mediatheque.Media"
+        import="Mediatheque.InitListener"
+        import="javax.servlet.ServletContextListener"
+        import="javax.servlet.ServletContextEvent"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%! ArrayList<Media> liste = (ArrayList) servletContextEvent.getServletContext().getAttribute("catalogue");%>--%>
 <%! ArrayList<Media> liste = Catalogue.get();%>
 <!DOCTYPE html>
 <html>

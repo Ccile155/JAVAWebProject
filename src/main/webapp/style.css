@@ -19,7 +19,7 @@ and open the template in the editor.
 /*################## BODIES ##################*/
 
 .Accueil{
-    height: 550px;
+    height: 550px; /*à adapter à l'écran*/
     text-align: center;
     background-image: url("./images/book.jpg");
     background-position:center center;
@@ -45,33 +45,46 @@ table{
 input.transparent-input{
        background-color:rgba(255,255,255,0.2) !important;
        /*border:none !important;*/
-       width: 500px;
+       min-width: 500px; /*à adapter à l'écran*/
     }
 #recherche{
-    height: 550px;
+    height: 550px; /*à adapter à l'écran*/
     background-image: url("./images/tasse.jpg");
     background-position: center center;
     background-repeat: no-repeat;
 }
+/*
+*/.form-group{
+    min-width: 50%;
+}
+
 #emprunt{
     text-align: center;
-    width: 500px;
+    color: white;
+    min-height: 500px; /*à adapter à l'écran*/
+    background-image: url("./images/bibli.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 #selectEmprunt{
-    
-    /*background-color:rgba(23,162,184,0.1) !important;*/
-    background-color:rgba(255,228,132,0.1) !important;
+    max-width: 50%;
+    background-color:rgba(255,255,255,0.8) !important;
+    margin: auto;
+    /*background-color:rgba(255,228,132,0.8) !important;*/
 }
 
 #resultats{
-    min-height: 500px;
+    min-height: 500px; /*à adapter à l'écran*/
     text-align: center;
+    background-image: url("./images/tasse.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 #deco{
     text-align: center;
     color: white;
-    height: 500px;
+    min-height: 500px; /*à adapter à l'écran*/
     width: auto;
     background-image: url("./images/medias.jpg");
     background-position: center center;

@@ -3,7 +3,8 @@
     Created on : 1 août 2019, 10:13:52
     Author     : Administrateur
 --%>
-<%--<%@page import="Mediatheque.FiltrerCata"%>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="Mediatheque.FiltrerCata"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,19 +18,30 @@
     </head>
     <body>
         <%@include file="/Navbar.jsp" %>
-        <br>
+ 
         <jsp:useBean id="MaRecherche" scope="session" class="Mediatheque.Recherche"/>
-        <jsp:setProperty name="MaRecherche" property="titre" />
-        <jsp:setProperty name="MaRecherche" property="auteur"/>
+        <%--<jsp:setProperty name="MaRecherche" property="titre"/>--%>
+        <%--<jsp:setProperty name="MaRecherche" property="auteur"/>--%>
         <jsp:setProperty name="MaRecherche" property="param"/>
+        <jsp:setProperty name="MaRecherche" property="titre" value='<%= request.getParameter("titre")%>' />
+        <jsp:setProperty name="MaRecherche" property="auteur" value='<%= request.getParameter("auteur")%>' />
         
         <div class="container" id="resultats">
 
             <h1>Résultats</h1>
             <br>
             <jsp:include page="/filtrercata" />
-            <% // String m = (String)session.getAttribute("resultat");
-//            out.println(m);%>
+            <table class="table container">
+                <thead>
+                <tr><th scope="col">Titre</th><th scope="col">Auteur</th></tr>
+              </thead>
+              <tbody>
+                <c:set var="count" value="0" scope="page" />
+                <c:forEach var="x" items="${sessionScope.resultat}">
+                    <tr><td>${x.getTitre()}</td><td>${x.getAuteur()}</td></tr>
+                </c:forEach>  
+              </tbody>
+            </table>
             
             <!--<p><jsp:getProperty name="MaRecherche" property="titre"/>,-->
                 <%--<jsp:getProperty name="MaRecherche" property="auteur"/>--%>
@@ -40,7 +52,7 @@
                 <button type="submit" class="btn btn-secondary" >Nouvelle Recherche </button>
             </form>
         </div>
-        <br>    
+  
         <%@include file="/Footer.jsp" %>
     </body>
 </html>

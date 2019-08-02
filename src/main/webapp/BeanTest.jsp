@@ -31,10 +31,10 @@
                   <input name="auteur" type="search" class="form-control transparent-input" id="auteur" placeholder="Auteur" value="<jsp:getProperty name="MaRecherche" property="auteur"/>">
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="param" id="typeMedia" value="plein de pages" checked>
+                  <input class="form-check-input" type="radio" name="param" id="typeMedia" value="<jsp:getProperty name="MaRecherche" property="param"/>" checked>
                   <label class="form-check-label" for="exampleRadios1"> Livre </label>
                   &nbsp; &nbsp; &nbsp;
-                  <input class="form-check-input" type="radio" name="param" id="exampleRadios2" value="plein de min">
+                  <input class="form-check-input" type="radio" name="param" id="exampleRadios2" value="<jsp:getProperty name="MaRecherche" property="param"/>">
                   <label class="form-check-label" for="exampleRadios2"> DVD </label>
                 </div>
                 <br>

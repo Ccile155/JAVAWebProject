@@ -6,7 +6,6 @@
 package Mediatheque;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,24 +31,39 @@ public class FiltrerCata extends HttpServlet {
             throws ServletException, IOException {
         
         Recherche r = (Recherche)request.getSession().getAttribute("MaRecherche"); //récupération du bean
-        ArrayList<Media> liste = Catalogue.get();
-        ArrayList<Media> ResultatRecherche = new ArrayList<>();
-        for (Media x: liste){
-            if (x.getAuteur().equals((r.getAuteur()))){
-                ResultatRecherche.add(x);
+        
+        ArrayList<Media> ResultatRecherche = (ArrayList) request.getServletContext().getAttribute("catalogue");
+        
+        if (r.getAuteur().trim().length() != 0){
+            ArrayList<Media> c = new ArrayList<>();
+            for (Media x: ResultatRecherche){
+                if (x.getAuteur().toLowerCase().contains((r.getAuteur().toLowerCase()))){
+                    c.add(x);
+                }
             }
-        PrintWriter out = response.getWriter();
-        for (Media v: ResultatRecherche){
-            if (v instanceof Livre){
-                Livre l = (Livre)v;
-                out.println(l.getTitre()+", "+ l.getAuteur()+", "+ l.getNbpage()+"<br>");
-            }
-            if (v instanceof DVD){
-                DVD d = (DVD)v;
-                out.println(d.getTitre()+", "+ d.getAuteur()+", "+ d.getDuree()+"<br>");
-        }}
-        request.setAttribute("resultat", r);
+        ResultatRecherche = c;
         }
+        if (r.getTitre().trim().length() != 0){
+            ArrayList<Media> c = new ArrayList<>();
+            for (Media x: ResultatRecherche){
+                if (x.getTitre().toLowerCase().contains((r.getTitre().toLowerCase()))){
+                    c.add(x);
+                }
+            }
+        ResultatRecherche = c;
+        }
+
+//        PrintWriter out = response.getWriter();
+//        for (Media v: ResultatRecherche){
+//            if (v instanceof Livre){
+//                Livre l = (Livre)v;
+//                out.println(l.getTitre()+", "+ l.getAuteur()+", "+ l.getNbpage()+"<br>");
+//            }
+//            if (v instanceof DVD){
+//                DVD d = (DVD)v;
+//                out.println(d.getTitre()+", "+ d.getAuteur()+", "+ d.getDuree()+"<br>");
+//        }}
+        request.getSession().setAttribute("resultat", ResultatRecherche);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

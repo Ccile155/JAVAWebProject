@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/ProjetWeb/#">MédiaShare</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
            <li class="nav-item">
                 <a class="nav-link" href="<%=getServletConfig().getServletContext().getContextPath()%>/Emprunter"><i class="material-icons">move_to_inbox</i> Emprunter &nbsp;</a>
             </li>
-<!--                    <li class="nav-item">
+<!--        <li class="nav-item">
                 <a class="nav-link" href="/ProjetWeb/Nouveau"><i class="material-icons">create</i> Nouveau media</a>
             </li>-->
             <li>
@@ -29,17 +29,12 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">account_circle</i> 
-                    <%--<jsp:getProperty name='Connexion' property='user'/>--%>
-                    <%=login%>
+                    Session invitée
                 </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <% if (login == "Session invitée")
-                        { out.println("<a class='dropdown-item' href='/ProjetWeb/Connexion'><i class='material-icons'>check</i> Connexion</a>");
-                        } else {out.println("<a class='dropdown-item' href='/ProjetWeb/Parameters'><i class='material-icons'>settings</i> Paramètres</a>");}
-                       %>
-                        <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Deconnexion.jsp"><i class='material-icons'>close</i> Deconnexion</a>
-                    </div>
-                </li>
-            </ul>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Connexion"><i class='material-icons'>check</i> Connexion</a>
+                    <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Deconnexion.jsp"><i class='material-icons'>close</i> Deconnexion</a>
+                </div>
+            </li>
+        </ul>
 </nav>
-                    

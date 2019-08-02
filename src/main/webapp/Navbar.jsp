@@ -1,11 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String login = (String)session.getAttribute("user");
-    if (login == null){ login = "Session invitÃ©e";} %>
+    if (login == null){ login = "Session invitée";} %>
 <%--<jsp:useBean id="Connexion" scope="session" class="Mediatheque.Authentifier" />
 <jsp:setProperty name="Connexion" property="user" />--%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand" href="/ProjetWeb/#">MÃ©diaShare</a>
+    <a class="navbar-brand" href="/ProjetWeb/#">MédiaShare</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -39,9 +38,9 @@
                     <%=login%>
                 </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <% if (login == "Session invitÃ©e")
+                        <% if (login == "Session invitée")
                         { out.println("<a class='dropdown-item' href='/ProjetWeb/Connexion'><i class='material-icons'>check</i> Connexion</a>");
-                        } else {out.println("<a class='dropdown-item' href='/ProjetWeb/Parameters'><i class='material-icons'>settings</i> ParamÃ¨tres</a>");}
+                        } else {out.println("<a class='dropdown-item' href='#'><i class='material-icons'>settings</i> Paramètres</a>");}
                        %>
                         <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Deconnexion.jsp"><i class='material-icons'>close</i> Deconnexion</a>
                     </div>

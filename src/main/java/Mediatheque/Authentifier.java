@@ -87,10 +87,11 @@ public class Authentifier extends HttpServlet {
         if(idSaisi != null && mdpSaisi != null && userSaisi != null){
 //            session.setAttribute("id", idSaisi);
             session.setAttribute("user", userSaisi );
-//            sc.getRequestDispatcher(sc.getContextPath() +"/Navbar").include(request, response);
 //            response.sendRedirect(sc.getContextPath() + "/Emprunter");
             sc.getRequestDispatcher("/Emprunter").forward(request, response);
 //            sc = "this.getServletContext()"
+//            le forward envoie la réponse en mode "return" (d'où la mention unecessary statement)
+//            un include à la place pourrait permettre d'envoyer UNE réponse et de pouvoir la renvoyer après
         } else {
             response.sendRedirect(sc.getContextPath() + "/Connexion");
 //            sc.getRequestDispatcher("/Connexion").forward(request, response);

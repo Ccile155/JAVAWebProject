@@ -7,8 +7,8 @@ package Mediatheque;
 
 public class Recherche {
     
-    private String titre ="Titre";
-    private String auteur ="Auteur";
+    private String titre ="";
+    private String auteur ="";
     private String param ="";
     
     public String getTitre() {

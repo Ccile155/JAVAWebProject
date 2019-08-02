@@ -24,7 +24,8 @@
             <div id="Annonce">
                 <br>
                 <br>
-                <h1>Bienvenue sur MediaShare,<br>* les médias pas chers *</h1>
+                <br>
+                <h1>Bienvenue sur MediaShare<br>* les médias pas chers *</h1>
                 <br>
                 <h4> Retrouvez vos livres et DVDs préférés dans notre catalogue </h4>
             </div>
