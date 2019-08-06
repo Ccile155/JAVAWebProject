@@ -39,10 +39,12 @@
                 </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <% if (login == "Session invitée")
-                        { out.println("<a class='dropdown-item' href='/ProjetWeb/Connexion'><i class='material-icons'>check</i> Connexion</a>");
-                        } else {out.println("<a class='dropdown-item' href='#'><i class='material-icons'>settings</i> Paramètres</a>");}
+                            {out.println("<a class='dropdown-item' href='/ProjetWeb/Inscription.jsp'><i class='material-icons'>create</i> Inscription</a>");
+                            out.println("<a class='dropdown-item' href='/ProjetWeb/Connexion'><i class='material-icons'>check</i> Connexion</a>");
+                        } else {out.println("<a class='dropdown-item' href='#'><i class='material-icons'>settings</i> Paramètres</a>");
+                            out.println("<a class='dropdown-item' href='" + getServletConfig().getServletContext().getContextPath() + "/Deconnexion.jsp'><i class='material-icons'>close</i> Deconnexion</a>");}
                        %>
-                        <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Deconnexion.jsp"><i class='material-icons'>close</i> Deconnexion</a>
+                        
                     </div>
                 </li>
             </ul>

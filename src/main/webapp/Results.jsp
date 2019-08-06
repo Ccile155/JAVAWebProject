@@ -36,7 +36,6 @@
                 <tr><th scope="col">Titre</th><th scope="col">Auteur</th></tr>
               </thead>
               <tbody>
-                <c:set var="count" value="0" scope="page" />
                 <c:forEach var="x" items="${sessionScope.resultat}">
                     <tr><td>${x.getTitre()}</td><td>${x.getAuteur()}</td></tr>
                 </c:forEach>  

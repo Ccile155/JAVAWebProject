@@ -32,8 +32,8 @@
                     Session invitée
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Inscription.jsp"><i class='material-icons'>create</i> Inscription</a>
                     <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Connexion"><i class='material-icons'>check</i> Connexion</a>
-                    <a class="dropdown-item" href="<%=getServletConfig().getServletContext().getContextPath()%>/Deconnexion.jsp"><i class='material-icons'>close</i> Deconnexion</a>
                 </div>
             </li>
         </ul>

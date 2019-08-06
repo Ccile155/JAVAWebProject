@@ -19,7 +19,7 @@
         
         <%@include file="/Navbar.jsp" %>
         <br>
-        <div class="container">
+        <div class="container connexion">
             <h2>Connexion</h2>
             <form name="Connexion" method="POST" action="<%=getServletConfig().getServletContext().getContextPath()%>/Authentifier">
 <!--                <div class="form-group">
@@ -27,17 +27,14 @@
                   <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Votre nom">
                 </div>-->
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Nom</label>
-                  <input name="user" type="text" class="form-control" id="user" placeholder="Pseudo">
-                </div>
-                <div class="form-group">
                   <label for="exampleFormControlInput1">Adresse mail</label>
-                  <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                  <input name="email" type="email" class="form-control transparent-input" id="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Mot de passe</label>
-                  <input name="password" type="password" class="form-control" id="password" placeholder="********">
+                  <input name="password" type="password" class="form-control transparent-input" id="password" placeholder="********">
                 </div>
+                <p style="color: red;"><% if (request.getAttribute("error")!=null){out.println(request.getAttribute("error"));}%></p>
                 <button type="submit" class="btn btn-info">Connexion</button>
             </form>
         </div>

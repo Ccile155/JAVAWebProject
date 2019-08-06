@@ -5,34 +5,36 @@
  */
 package Mediatheque;
 
+import Authentification.InscriptionDB;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Administrateur
  */
-@WebServlet(name = "Emprunter", urlPatterns = {"/Emprunter"})
-public class Emprunter extends HttpServlet {
-    ArrayList <Media> liste = new ArrayList<>();
+public class Inscrire extends HttpServlet {
+    
     ServletContext sc;
-
+//    String nomSaisi;
+//    Date date ;
+//    String emailSaisi;
+//    String mdpSaisi ;
+//    String mdpSaisi2;
+    
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-//        liste = new ArrayList<>();
-//        Importe();
         sc = config.getServletContext();
     }
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,8 +46,8 @@ public class Emprunter extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        }
-    
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -58,19 +60,7 @@ public class Emprunter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String id = (String) session.getAttribute("id");
-        if (id == null){
-//            response.sendRedirect(sc.getContextPath()+"/Connexion.html");
-            sc.getRequestDispatcher("/Connexion").forward(request, response);
-        }
-//        
-//        ArrayList <Media> table = new ArrayList<>();
-//        for (Media x : liste) {
-//            table.add(x);
-//            request.setAttribute("media", table);
-//        }
-//        this.getServletContext().getRequestDispatcher("/Emprunt.jsp").forward(request, response);
+        response.sendRedirect(sc.getContextPath() + "/Inscription");
     }
 
     /**
@@ -85,12 +75,29 @@ public class Emprunter extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String id = (String) session.getAttribute("id");
-        if (id == null){
-            sc.getRequestDispatcher("/Connexion").forward(request, response);
-            return;
-        } else {
-            sc.getRequestDispatcher("/Emprunt.jsp").forward(request, response);
+        String nomSaisi = request.getParameter("nom");
+        String dateSaisi = request.getParameter("date");
+        String emailSaisi = request.getParameter("email");
+        String mdpSaisi = request.getParameter("passwrd");
+        String mdpSaisi2 = request.getParameter("passwrd2");
+        
+        if (mdpSaisi != null && mdpSaisi.equals(mdpSaisi2)){
+            if(!(emailSaisi == null && nomSaisi == null)){
+                boolean added = InscriptionDB.makeUser(nomSaisi, dateSaisi, emailSaisi, mdpSaisi);
+                if(added){
+                    session.setAttribute("user", nomSaisi);
+//                    response.sendRedirect(sc.getContextPath() + "/Success");
+                    sc.getRequestDispatcher("/Success.jsp").forward(request, response);
+                }
+    //            sc = "this.getServletContext()"
+    //            le forward envoie la réponse en mode "return" (d'où la mention unecessary statement)
+    //            un include à la place pourrait permettre d'envoyer UNE réponse et de pouvoir la renvoyer après
+            } else {
+                sc.getRequestDispatcher("/Inscription.jsp").forward(request, response);
+    //            sc.getRequestDispatcher("/Connexion").forward(request, response);
+            }
+        } else {JOptionPane.showMessageDialog(null,"Les mots de passe ne correspondent pas!");
+            sc.getRequestDispatcher("/Inscription.jsp").forward(request, response);
         }
     }
 
@@ -104,35 +111,4 @@ public class Emprunter extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-//    public void Importe(){
-//    try{
-//        FileInputStream fis = new FileInputStream("./data/export.csv");
-//        Scanner sc = new Scanner(fis);
-//        String ligne;
-//        while(sc.hasNextLine()){
-//            ligne = sc.nextLine();
-//            String[] table = ligne.split(";");
-//            if(table.length == 0){continue;}
-//            
-//            try{
-//                Media m ;
-//                if (table[2].endsWith("p")) {
-//                    m = new Livre(table[0], table[1], table[2]);
-//                } else {
-//                    m = new DVD(table[0], table[1], table[2]);
-//                }
-//                if (!liste.contains(m)) {
-//                    liste.add(m);
-//                    }
-//            } catch (Exception e){
-//                System.out.println(e.getMessage());
-//            } 
-//        }
-//        fis.close();   
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 }

@@ -9,7 +9,8 @@
 <%@page import="java.util.ArrayList" 
         import="Mediatheque.Media"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%! ArrayList<Media> liste = Catalogue.get();%>
+<%--<%! ArrayList<Media> liste = Catalogue.get();%>--%>
+<% ArrayList<Media> liste = (ArrayList)getServletContext().getAttribute("catalogue");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,13 +31,11 @@
             <div class="form-group container">
                 <!--<label for="exampleFormControlSelect2">Médias disponibles</label>-->
                 <select multiple class="form-control" id="selectEmprunt">
-                    <% 
-                        for (Media item : liste) {
-                        out.println("<option>");
-                        out.println(item.toString());
-                        out.println("</option>");
-                    }
-                    %>
+                    <% for (Media item : liste) {
+                        %><option><%
+                            out.println(item.toString());
+                        %></option><%
+                    }%>
                 </select>
                 <br>
                 <div style="text-align: center">

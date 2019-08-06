@@ -38,6 +38,8 @@ public abstract class Media {
         else {throw new Exception("Attention : cette oeuvre a certainement un auteur.");}
     }
 
+    public abstract String getRequete();
+    
     @Override
     public int hashCode() {
         int hash = 7;

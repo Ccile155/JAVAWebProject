@@ -3,7 +3,7 @@
     Created on : 31 juil. 2019, 12:16:42
     Author     : Administrateur
 --%>
-
+<%@page import="Mediatheque.Authentifier"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +17,13 @@
     </head>
     <body>
         <%@include file="/Navbar.jsp" %>
-        <div class="container">
+        <br>
+        <h1 style="text-align: center; color: #17A2B8;"> Connexion réussie, bienvenue <%= session.getAttribute("user") %>!</h1>
+        <div class="container" id="success">
             <br>
-            <h2> Connexion réussie !</h2>
-            <h4> Bienvenue <% if (user != null) {out.println(user +"!");} else {out.println("!");} %> </h4>
             <br>
-        </div>    
+        </div>  
+        <br>
         <%@include file="/Footer.jsp" %>
     </body>
 </html>

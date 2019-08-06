@@ -3,31 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Mediatheque;
+package MySqlDB;
 
-import Authentification.Authentification;
+import Mediatheque.Catalogue;
+import Mediatheque.Media;
 import java.io.IOException;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Administrateur
  */
-public class Authentifier extends HttpServlet {
-    ServletContext sc;
-    
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        sc = config.getServletContext();
-    }
-    
+@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
+public class ExporterBDD extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,9 +33,11 @@ public class Authentifier extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        try (PrintWriter out = response.getWriter()) {
-//            out.println(user);
-//        }
+        ArrayList<Media> liste = Catalogue.get(getServletContext().getRealPath("/data/export.csv"));
+        Catalogue.Exporte(liste);
+        String r = "Importation réussie";
+        request.setAttribute("réponse", r );
+        getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,7 +52,7 @@ public class Authentifier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        sc.getRequestDispatcher("/Connexion").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -70,28 +66,7 @@ public class Authentifier extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String emailSaisi = request.getParameter("email");
-        String mdpSaisi = request.getParameter("password");
-        
-//        request.setAttribute( "user", "Session Invitée" );
-        if(emailSaisi != null && mdpSaisi != null){
-            String userName = Authentification.isUser(emailSaisi, mdpSaisi);
-            if(userName != null){
-                session.setAttribute("user", userName);
-//                response.sendRedirect(sc.getContextPath() + "/Emprunter");
-                sc.getRequestDispatcher("/Success.jsp").forward(request, response);
-            } else {
-                String err = "Login ou mot de passe invalide.";
-                request.setAttribute("error", err);
-                sc.getRequestDispatcher("/Connexion").forward(request, response);}
-//            sc = "this.getServletContext()"
-//            le forward envoie la réponse en mode "return" (d'où la mention unecessary statement)
-//            un include à la place pourrait permettre d'envoyer UNE réponse et de pouvoir la renvoyer après
-        } else {
-                response.sendRedirect(sc.getContextPath() + "/Connexion");
-//            sc.getRequestDispatcher("/Connexion").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

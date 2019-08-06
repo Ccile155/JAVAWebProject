@@ -7,14 +7,13 @@
 <%@page import="Mediatheque.Livre"%>
 <%@page import="Mediatheque.Catalogue"%>
 <%@page import="java.util.ArrayList" 
-        import="Mediatheque.Media"
-        import="Mediatheque.InitListener"
-        import="javax.servlet.ServletContextListener"
-        import="javax.servlet.ServletContextEvent"%>
+        import="Mediatheque.Media"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<%! ArrayList<Media> liste = (ArrayList) servletContextEvent.getServletContext().getAttribute("catalogue");%>--%>
-<%! ArrayList<Media> liste = Catalogue.get();%>
+<% ArrayList<Media> liste = (ArrayList)getServletContext().getAttribute("catalogue");%>
+<%--<%! ArrayList<Media> liste = Catalogue.get();%>--%>
+
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

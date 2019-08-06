@@ -8,10 +8,6 @@
         <servlet-class>Mediatheque.Authentifier</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Consulter</servlet-name>
-        <servlet-class>Mediatheque.Catalogue</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Emprunter</servlet-name>
         <jsp-file>/Emprunt.jsp</jsp-file>
     </servlet>
@@ -43,6 +39,22 @@
         <servlet-name>Deconnexion</servlet-name>
         <jsp-file>/Deconnexion.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>Inscription</servlet-name>
+        <jsp-file>/Inscription.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>InscriptionDB</servlet-name>
+        <servlet-class>MySqlDB.InscriptionDB</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Inscrire</servlet-name>
+        <servlet-class>Mediatheque.Inscrire</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExporterBDD</servlet-name>
+        <servlet-class>MySqlDB.ExporterBDD</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentifier</servlet-name>
         <url-pattern>/Authentifier</url-pattern>
@@ -50,10 +62,6 @@
     <servlet-mapping>
         <servlet-name>Emprunter</servlet-name>
         <url-pattern>/Emprunter</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Consulter</servlet-name>
-        <url-pattern>/Consulter</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
@@ -83,6 +91,22 @@
     <servlet-mapping>
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/Deconnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Inscription</servlet-name>
+        <url-pattern>/Inscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscriptionDB</servlet-name>
+        <url-pattern>/InscriptionDB</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Inscrire</servlet-name>
+        <url-pattern>/Inscrire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExporterBDD</servlet-name>
+        <url-pattern>/ExporterBDD</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

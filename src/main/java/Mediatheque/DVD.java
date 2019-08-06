@@ -5,7 +5,15 @@
  */
 package Mediatheque;
 
+import MySqlDB.InteractionDB;
 import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,6 +41,40 @@ public class DVD extends Media {
         else {this.duree = duree.trim();}
     }
 
+    @Override
+    public String getRequete() {
+        //@TODO mettre nom de table en paramètre
+        StringBuilder sb = new StringBuilder("INSERT INTO `dvd` (`titre`, `auteur`, `duree`, `lecteur`, `dateEmprunt`)");
+        sb.append("VALUES ('");
+        sb.append(getTitre());
+        sb.append("', '");
+        sb.append(getAuteur());
+        sb.append("', '");
+        sb.append(getDuree());
+        sb.append("', , )");
+        return sb.toString();
+    }
+    
+    public static ArrayList<Media> getAll(){
+        ArrayList<Media> table = new ArrayList<>();
+        try{
+        Connection c = InteractionDB.getInteractionDB().getConnection();
+            Statement stmt = c.createStatement();
+            String requete = "SELECT `titre`, `auteur`, `duree` FROM `dvd`";
+            ResultSet resultat = stmt.executeQuery(requete);
+            while (resultat.next()){
+                try{
+                    Media m = new DVD (resultat.getString("titre"), resultat.getString("auteur"), resultat.getString("duree"));
+                    if (!table.contains(m)) {table.add(m);}
+                    } catch (Exception e){System.out.println(e.getMessage());}
+            }
+        } catch (SQLException e){
+            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return table;
+    }
+    
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getTitre()); // ici, dans la classe nom = this.nom

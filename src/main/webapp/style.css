@@ -17,6 +17,12 @@ and open the template in the editor.
 }
 
 /*################## BODIES ##################*/
+/*@media only screen and (max-width:800px) {
+body {
+ background-color:black;
+ color:white
+ }
+}*/
 
 .Accueil{
     height: 550px; /*à adapter à l'écran*/
@@ -35,6 +41,17 @@ and open the template in the editor.
     font-weight: bolder;
 }
 
+.connexion{
+    max-width: 50%;
+}
+
+#success{
+    height: 450px; /*à adapter à l'écran*/
+    background-image: url("./images/birds.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 table{
     background-color: rgba(255,255,255, 0.3);
 }
@@ -43,7 +60,7 @@ table{
     width: 100%;
 }*/
 input.transparent-input{
-       background-color:rgba(255,255,255,0.2) !important;
+       background-color:rgba(255,255,255,0.3) !important;
        /*border:none !important;*/
        min-width: 500px; /*à adapter à l'écran*/
     }
