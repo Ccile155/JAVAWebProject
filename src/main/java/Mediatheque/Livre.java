@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,7 +53,7 @@ public class Livre extends Media {
         sb.append(getAuteur());
         sb.append("', '");
         sb.append(getNbpage());
-        sb.append("', , )");
+        sb.append("', NULL, NULL)");
         return sb.toString();
     }
 
@@ -93,6 +94,30 @@ public class Livre extends Media {
         sb.append("; ");
         sb.append(nbpage);
         p.println(sb.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Livre other = (Livre) obj;
+        if (!Objects.equals(this.nbpage, other.nbpage)) {
+            return false;
+        }
+        return true;
     }
    
 }

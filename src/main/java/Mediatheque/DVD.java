@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,7 +52,7 @@ public class DVD extends Media {
         sb.append(getAuteur());
         sb.append("', '");
         sb.append(getDuree());
-        sb.append("', , )");
+        sb.append("', NULL, NULL)");
         return sb.toString();
     }
     
@@ -94,4 +95,29 @@ public class DVD extends Media {
         sb.append(duree);
         p.println(sb.toString());
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DVD other = (DVD) obj;
+        if (!Objects.equals(this.duree, other.duree)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

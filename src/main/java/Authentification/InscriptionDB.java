@@ -8,10 +8,8 @@ package Authentification;
 
 import java.sql.Connection;
 import MySqlDB.InteractionDB;
-import java.util.Date;
 import java.sql.Statement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,18 +27,19 @@ public class InscriptionDB {
 
         try{
             Statement stmt = c.createStatement();
-            StringBuilder sb = new StringBuilder("INSERT INTO `lecteurs` (`id`, `nom`, `date-naissance`, `email`, `passwrd`) VALUES ('");
+            StringBuilder sb = new StringBuilder("INSERT INTO `lecteurs` (`id`, `nom`, `date-naissance`, `email`, `passwrd`) VALUES (NULL, '");
             sb.append(login);
             sb.append("', '");
             sb.append(date);
             sb.append("', '");
             sb.append(mail);
-            sb.append("')");
+            sb.append("', '");
             sb.append(mdp);
-            sb.append("')");
+            sb.append("');");
             String requete = sb.toString();
 //            ResultSet resultat = stmt.executeQuery(requete);
-            int added = stmt.executeUpdate(requete);
+            int added;
+            added = stmt.executeUpdate(requete);
             stmt.close();
             return added == 1;
         }catch (SQLException e){

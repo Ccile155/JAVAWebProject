@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Administrateur
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
+@WebServlet(name = "ExporterBDD", urlPatterns = {"/ExporterBDD"})
 public class ExporterBDD extends HttpServlet {
 
     /**
@@ -33,10 +33,9 @@ public class ExporterBDD extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Media> liste = Catalogue.get(getServletContext().getRealPath("/data/export.csv"));
-        Catalogue.Exporte(liste);
-        String r = "Importation réussie";
-        request.setAttribute("réponse", r );
+        ArrayList<Media> myFile = Catalogue.get(getServletContext().getRealPath("/data/export.csv"));
+        int count = Catalogue.EcrireDB(myFile);
+        request.setAttribute("réponse", count );
         getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
     }
 
